@@ -11,7 +11,12 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < 10; $i++) {
-            $note = (new Note())->setTitle("note_title_$i")->setContent("note_content_$i");
+            $note = (new Note())
+                ->setTitle("note_title_$i")
+                ->setContent("note_content_$i")
+                ->setUrl("note_url_$i")
+                ->setEditCode("note_edit_code_$i")
+            ;
             $manager->persist($note);
         }
 

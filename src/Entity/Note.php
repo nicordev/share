@@ -33,9 +33,14 @@ class Note
     private $editCode;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $url;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $readCode;
 
     public function getId(): ?int
     {
@@ -86,6 +91,18 @@ class Note
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getReadCode(): ?string
+    {
+        return $this->readCode;
+    }
+
+    public function setReadCode(?string $readCode): self
+    {
+        $this->readCode = $readCode;
 
         return $this;
     }

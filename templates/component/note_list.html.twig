@@ -1,7 +1,7 @@
 <section class="note-list">
     {% for note in notes %}
         <article class="note">
-            <h2 class="note-title switch-display-trigger"><a href="{{ path('note_show', {'id': note.id}) }}">{{ note.title }}</a></h2>
+            <h2 class="note-title switch-display-trigger"><a href="{{ path('note_show', {'url': note.url}) }}">{{ note.title }}</a></h2>
             <div class="note-content hidden">{{ note.content }}</div>
         </article>
     {% endfor %}

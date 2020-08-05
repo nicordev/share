@@ -1,0 +1,33 @@
+.note-form {
+    background-color: #363636;
+    color: antiquewhite;
+}
+
+.note-editor {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.note-editor textarea {
+    min-height: 200px;
+    overflow: scroll;
+ }
+
+.note-command {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.note-command-label {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+.note-command-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 1rem;
+}

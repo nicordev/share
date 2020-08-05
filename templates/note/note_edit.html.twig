@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Notes{% endblock %}
+{% block title %}{{ note.title }}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset("/css/note.css") }}">
@@ -9,5 +9,4 @@
 {% block body %}
     {% include 'component/flash_message.html.twig' %}
     {% include 'component/note_editor.html.twig' %}
-    {% include 'component/note_list.html.twig' %}
 {% endblock %}

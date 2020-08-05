@@ -1,0 +1,33 @@
+.button {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+.is-success {
+    background-color: #48c774;
+    border-color: transparent;
+    color: #fff;
+}
+
+.is-warning {
+    background-color: #ffdd57;
+    border-color: transparent;
+    color: rgba(0,0,0,.7);
+}
+
+.is-danger {
+    background-color: #f14668;
+    border-color: transparent;
+    color: #fff;
+}
