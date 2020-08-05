@@ -2,13 +2,10 @@
 
 {% block title %}Notes{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("/css/note_list.css") }}">
+{% endblock %}
+
 {% block body %}
-    <section class="note-list">
-        {% for note in notes %}
-            <article class="note">
-                <h2 class="note-title switch-display-trigger">{{ note.title }}</h2>
-                <div class="note-content">{{ note.content }}</div>
-            </article>
-        {% endfor %}
-    </section>
+    {% include 'note_list/note_list.html.twig' %}
 {% endblock %}
