@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Note;
 use App\Form\NoteType;
 use App\Security\Helper\NoteCodeValidator;
-use App\Security\Voter\NoteVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,8 +21,8 @@ class NoteController extends AbstractController
         NoteCodeValidator $noteCodeValidator
     ) {
         if (!$noteCodeValidator->isClearedToRead($request, $note)) {
-            $this->addFlash("error", "Wrong code.");
-            $this->redirectToRoute('home');
+            $this->addFlash("warning", "This note requires a valid code.");
+            return $this->render('note/note_ask_read_code.html.twig', ['note' => $note]);
         }
         return $this->render('note/note_show.html.twig', [
             'note' => $note,

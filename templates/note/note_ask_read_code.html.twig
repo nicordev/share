@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ note.title }}
+{% endblock %}
+
+{% block body %}
+    {% include 'component/flash_message.html.twig' %}
+    <section id="note-ask-read-code">
+        <h1>{{ note.title }}</h1>
+
+        <label for="note-read-code">Please enter note code</label>
+        <input type="text" id="note-read-code">
+        <button type="submit" id="note-read-code-submit-button">Go</button>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        (function () {
+            const readCodeSubmitButtonElement = document.getElementById('note-read-code-submit-button');
+
+            readCodeSubmitButtonElement.addEventListener('click', goToNote);
+
+            function goToNote() {
+                const readCodeElement = document.getElementById('note-read-code');
+
+                if (!readCodeElement.value) {
+                    console.error('Missing read code.');
+                    return;
+                }
+
+                window.location.href = `{{ path('note_show', {url: note.url}) }}?read_code=${readCodeElement.value}`;
+            }
+        })();
+    </script>
+{% endblock %}

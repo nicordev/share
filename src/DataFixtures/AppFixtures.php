@@ -17,6 +17,9 @@ class AppFixtures extends Fixture
                 ->setUrl("note_url_$i")
                 ->setEditCode("note_edit_code_$i")
             ;
+            if ($i < 5) {
+                $note->setReadCode("note_read_code_$i");
+            }
             $manager->persist($note);
         }
 
