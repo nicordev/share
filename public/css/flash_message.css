@@ -1,0 +1,23 @@
+.flash-message {
+    padding: 1rem;
+}
+
+.flash-success {
+    background-color: #48c774;
+}
+
+.flash-warning {
+    background-color: coral;
+}
+
+.flash-error {
+    background-color: #f14668;
+}
+
+.alert {
+
+}
+
+.alert-primary {
+
+}
