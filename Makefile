@@ -4,8 +4,10 @@ load-fixtures:
 doctrine-schema-update:
 	php bin/console doctrine:schema:update --force
 
-cache-clear:
+delete-cache:
 	rm -rf var/cache
+
+cache-clear: delete-cache
 	php bin/console cache:clear
 
 .PHONY: load-fixtures doctrine-schema-update
