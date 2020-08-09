@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
@@ -33,6 +34,7 @@ class Note
     private $editCode;
 
     /**
+     * @Assert\Regex("#^[a-zA-Z]{1}[a-zA-Z0-9_\-]+$#")
      * @ORM\Column(type="string", length=255)
      */
     private $url;

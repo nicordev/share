@@ -49,7 +49,7 @@ class NoteController extends AbstractController
             if (!$noteCodeValidator->isClearedToEdit($request, $note)) {
                 $this->addFlash("error", "Wrong edit code.");
 
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('note_edit', ['url' => $note->getUrl()]);
             }
 
             $manager->flush();

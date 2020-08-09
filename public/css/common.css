@@ -5,3 +5,13 @@ body {
 .max-width-m {
     max-width: 400px;
 }
+
+.main-content {
+    position: relative;
+}
+
+.bottom-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

@@ -11,7 +11,10 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% include 'component/navigation.html.twig' %}
+            {% include 'component/flash_message.html.twig' %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

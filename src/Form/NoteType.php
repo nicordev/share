@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Note;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,9 @@ class NoteType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('editCode')
+            ->add('editCode', null, [
+                'attr' => ['value' => null]
+            ])
             ->add('url')
         ;
     }

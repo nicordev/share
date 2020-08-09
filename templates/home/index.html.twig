@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'component/flash_message.html.twig' %}
+    {{ parent() }}
     {% include 'component/note_editor.html.twig' %}
     {% include 'component/note_list.html.twig' %}
 {% endblock %}

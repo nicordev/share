@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'component/flash_message.html.twig' %}
+    {{ parent() }}
     <section id="note-ask-read-code">
         <h1>{{ note.title }}</h1>
 

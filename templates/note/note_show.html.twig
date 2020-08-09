@@ -3,7 +3,7 @@
 {% block title %}{{ note.title }}{% endblock %}
 
 {% block body %}
-    {% include 'component/flash_message.html.twig' %}
+    {{ parent() }}
     <section class="note-commands">
             <a class="btn btn-primary" href="{{ path('note_edit', { url: note.url }) }}">Edit</a>
     </section>
