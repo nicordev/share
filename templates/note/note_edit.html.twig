@@ -3,11 +3,9 @@
 {% block title %}{{ note.title }}{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset("/css/note.css") }}">
+    <link rel="stylesheet" href="{{ asset("/css/note_editor.css") }}">
 {% endblock %}
 
-{% block body %}
-    {{ parent() }}
-    {% include 'component/flash_message.html.twig' %}
+{% block content %}
     {% include 'component/note_editor.html.twig' %}
 {% endblock %}

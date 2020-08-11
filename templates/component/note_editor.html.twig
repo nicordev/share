@@ -15,7 +15,7 @@
         {{ form_widget(noteForm.url, {'attr': {'class': 'note-form-input'}}) }}
     </div>
     <div class="note-command max-width-m">
-        <button class="note-command-button button is-warning" id="save-button" type="submit">Save</button>
+        <button class="note-command-button button is-success" id="save-button" type="submit">Save</button>
         {% if note is defined %}
             <button class="note-command-button button is-danger" id="delete-button" type="button">Delete</button>
         {% endif %}
@@ -38,7 +38,6 @@
 
         urlElement.value = titleElement.value.split(' ')[0];
     }
-
 </script>
 
 {% if note is defined %}

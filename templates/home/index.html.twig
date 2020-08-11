@@ -3,12 +3,11 @@
 {% block title %}Notes{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset("/css/note.css") }}">
+    <link rel="stylesheet" href="{{ asset("/css/note_editor.css") }}">
     <link rel="stylesheet" href="{{ asset("/css/note_list.css") }}">
 {% endblock %}
 
-{% block body %}
-    {{ parent() }}
+{% block content %}
     {% include 'component/note_editor.html.twig' %}
     {% include 'component/note_list.html.twig' %}
 {% endblock %}

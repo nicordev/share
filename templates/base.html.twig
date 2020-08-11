@@ -16,6 +16,9 @@
         {% block body %}
             {% include 'component/navigation.html.twig' %}
             {% include 'component/flash_message.html.twig' %}
+            <section class="main-content">
+                {% block content %}{% endblock %}
+            </section>
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

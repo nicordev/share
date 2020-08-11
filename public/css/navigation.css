@@ -1,4 +1,14 @@
 .navigation {
     padding: 0.5rem;
-    border-bottom: #363636 solid 1px;
+    border-bottom: darkslateblue solid 2px;
+}
+
+.navigation-link {
+    text-decoration: none;
+    color: darkslateblue;
+    font-weight: bold;
+}
+
+.navigation-link:visited {
+    color: darkslateblue;
 }
