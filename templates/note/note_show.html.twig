@@ -9,8 +9,20 @@
     </section>
     <section class="note">
         <h1>{{ note.title }}</h1>
-        <div class="note-content">
-            {{ note.content }}
-        </div>
+        <div class="note-content">{{ note.content }}</div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/marked.min.js') }}"></script>
+    <script>
+        // Transpile markdown into html.
+        (function () {
+            const contentElements = document.getElementsByClassName('note-content');
+
+            for (let element of contentElements) {
+                element.innerHTML = marked(element.textContent);
+            }
+        })();
+    </script>
 {% endblock %}
