@@ -5,9 +5,37 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset("/css/note_editor.css") }}">
     <link rel="stylesheet" href="{{ asset("/css/note_list.css") }}">
+    <link rel="stylesheet" href="{{ asset("/css/home.css") }}">
 {% endblock %}
 
 {% block content %}
+    <section class="note-editor-commands">
+        <button class="button is-success" id="showNoteEditorButton">Add a note</button>
+        <button class="button is-warning hidden" id="closeNoteEditorButton">Close editor</button>
+    </section>
+    {% set noteEditorClass = 'hidden' %}
     {% include 'component/note_editor.html.twig' %}
     {% include 'component/note_list.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Transpile markdown into html.
+        (function () {
+            const showNoteEditorButtonElement = document.getElementById('showNoteEditorButton');
+            const closeNoteEditorButtonElement = document.getElementById('closeNoteEditorButton');
+            const noteEditorElement = document.getElementsByClassName('note-form')[0];
+
+            showNoteEditorButtonElement.addEventListener('click', function () {
+                noteEditorElement.classList.remove('hidden');
+                closeNoteEditorButtonElement.classList.remove('hidden');
+                this.classList.add('hidden');
+            });
+            closeNoteEditorButtonElement.addEventListener('click', function () {
+                noteEditorElement.classList.add('hidden');
+                showNoteEditorButtonElement.classList.remove('hidden');
+                this.classList.add('hidden');
+            });
+        })();
+    </script>
 {% endblock %}

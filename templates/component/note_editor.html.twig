@@ -1,4 +1,4 @@
-<section class="note-form">
+<section class="note-form{% if noteEditorClass is defined %} {{ noteEditorClass }}{% endif %}">
     {{ form_start(noteForm, {'attr': {'class': 'note-form'}}) }}
     <div class="note-editor">
         {{ form_label(noteForm.title) }}
