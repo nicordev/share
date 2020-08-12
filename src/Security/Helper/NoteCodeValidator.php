@@ -26,6 +26,6 @@ class NoteCodeValidator
     {
         $readCode = $request->query->get(self::READ_CODE_KEY);
 
-        return $readCode === $note->getReadCode();
+        return (string) $readCode === (string) $note->getReadCode();
     }
 }

@@ -22,7 +22,13 @@ class NoteController extends AbstractController
     ) {
         if (!$noteCodeValidator->isClearedToRead($request, $note)) {
             $this->addFlash("warning", "This note requires a valid code.");
-            return $this->render('note/note_ask_read_code.html.twig', ['note' => $note]);
+            return $this->render('note/note_ask_read_code.html.twig', [
+                'note' => $note,
+                'route' => 'note_show',
+                'routeAttributes' => [
+                    'url' => $note->getUrl()
+                ],
+            ]);
         }
         return $this->render('note/note_show.html.twig', [
             'note' => $note,
@@ -41,6 +47,16 @@ class NoteController extends AbstractController
         EntityManagerInterface $manager,
         NoteCodeValidator $noteCodeValidator
     ) {
+        if (!$noteCodeValidator->isClearedToRead($request, $note)) {
+            $this->addFlash("warning", "This note requires a valid code.");
+            return $this->render('note/note_ask_read_code.html.twig', [
+                'note' => $note,
+                'route' => 'note_edit',
+                'routeAttributes' => [
+                    'url' => $note->getUrl()
+                ],
+            ]);
+        }
         $noteForm = $this->createForm(NoteType::class, $note);
         $noteForm->handleRequest($request);
 
@@ -79,7 +95,7 @@ class NoteController extends AbstractController
         if (!$noteCodeValidator->isClearedToEdit($request, $note)) {
             $this->addFlash("error", "Wrong edit code.");
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('note_show', ['url' => $note->getUrl()]);
         }
 
         $manager->remove($note);

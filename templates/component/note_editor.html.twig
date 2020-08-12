@@ -7,6 +7,10 @@
         {{ form_widget(noteForm.content, {'attr': {'class': 'note-form-textarea'}}) }}
     </div>
     <div class="note-command max-width-m">
+        {{ form_label(noteForm.readCode) }}
+        {{ form_widget(noteForm.readCode, {'attr': {'class': 'note-form-input'}}) }}
+    </div>
+    <div class="note-command max-width-m">
         {{ form_label(noteForm.editCode) }}
         {{ form_widget(noteForm.editCode, {'attr': {'class': 'note-form-input'}}) }}
     </div>

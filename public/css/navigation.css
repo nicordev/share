@@ -1,6 +1,6 @@
 .navigation {
     padding: 0.5rem;
-    border-bottom: darkslateblue solid 2px;
+    border-bottom: rgba(0, 0, 0, 0.5) solid 1px;
 }
 
 .navigation-link {

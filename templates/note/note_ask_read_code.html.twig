@@ -29,7 +29,7 @@
                     return;
                 }
 
-                window.location.href = `{{ path('note_show', {url: note.url}) }}?read_code=${readCodeElement.value}`;
+                window.location.href = `{{ path(route, routeAttributes) }}?read_code=${readCodeElement.value}`;
             }
         })();
     </script>

@@ -8,7 +8,7 @@
 
 {% block content %}
     <section class="note-commands">
-        <a class="button is-warning" href="{{ path('note_edit', { url: note.url }) }}">Edit</a>
+        <a class="button is-warning" href="{{ path('note_edit', { url: note.url }) }}?read_code={{ note.readCode }}">Edit</a>
     </section>
     <section class="note">
         <h1>{{ note.title }}</h1>
