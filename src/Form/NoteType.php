@@ -15,11 +15,7 @@ class NoteType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('readCode')
-            ->add('editCode', null, [
-                'attr' => ['value' => null]
-            ])
-            ->add('url')
+            ->add('url', null, ['required' => false])
         ;
     }
 

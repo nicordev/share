@@ -1,3 +1,6 @@
+start:
+	symfony serve
+
 load-fixtures:
 	php bin/console doctrine:fixtures:load --quiet
 
