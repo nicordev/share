@@ -17,7 +17,7 @@ class HomeController extends AbstractController
      */
     public function index(NoteRepository $noteRepository, Request $request, EntityManagerInterface $manager)
     {
-        $notes = $noteRepository->findAll();
+        $notes = $noteRepository->findBy([], ['title' => 'asc']);
 
         $note = new Note();
         $noteForm = $this->createForm(NoteType::class, $note);

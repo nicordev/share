@@ -20,22 +20,26 @@
 
 {% block javascripts %}
     <script>
-        // Transpile markdown into html.
         (function () {
-            const showNoteEditorButtonElement = document.getElementById('showNoteEditorButton');
-            const closeNoteEditorButtonElement = document.getElementById('closeNoteEditorButton');
-            const noteEditorElement = document.getElementsByClassName('note-form')[0];
+            initialiseNoteEditorCommands();
 
-            showNoteEditorButtonElement.addEventListener('click', function () {
-                noteEditorElement.classList.remove('hidden');
-                closeNoteEditorButtonElement.classList.remove('hidden');
-                this.classList.add('hidden');
-            });
-            closeNoteEditorButtonElement.addEventListener('click', function () {
-                noteEditorElement.classList.add('hidden');
-                showNoteEditorButtonElement.classList.remove('hidden');
-                this.classList.add('hidden');
-            });
+            function initialiseNoteEditorCommands() {
+
+                const showNoteEditorButtonElement = document.getElementById('showNoteEditorButton');
+                const closeNoteEditorButtonElement = document.getElementById('closeNoteEditorButton');
+                const noteEditorElement = document.getElementsByClassName('note-form')[0];
+
+                showNoteEditorButtonElement.addEventListener('click', function () {
+                    noteEditorElement.classList.remove('hidden');
+                    closeNoteEditorButtonElement.classList.remove('hidden');
+                    this.classList.add('hidden');
+                });
+                closeNoteEditorButtonElement.addEventListener('click', function () {
+                    noteEditorElement.classList.add('hidden');
+                    showNoteEditorButtonElement.classList.remove('hidden');
+                    this.classList.add('hidden');
+                });
+            }
         })();
     </script>
 {% endblock %}

@@ -29,20 +29,10 @@ class Note
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $editCode;
-
-    /**
      * @Assert\Regex("#^[a-zA-Z]{1}[a-zA-Z0-9_\-]+$#")
      * @ORM\Column(type="string", length=255)
      */
     private $url;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $readCode;
 
     public function getId(): ?int
     {
@@ -73,18 +63,6 @@ class Note
         return $this;
     }
 
-    public function getEditCode(): ?string
-    {
-        return $this->editCode;
-    }
-
-    public function setEditCode(?string $editCode): self
-    {
-        $this->editCode = $editCode;
-
-        return $this;
-    }
-
     public function getUrl(): ?string
     {
         return $this->url;
@@ -93,18 +71,6 @@ class Note
     public function setUrl(?string $url): self
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getReadCode(): ?string
-    {
-        return $this->readCode;
-    }
-
-    public function setReadCode(?string $readCode): self
-    {
-        $this->readCode = $readCode;
 
         return $this;
     }

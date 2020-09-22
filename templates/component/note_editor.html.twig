@@ -1,5 +1,5 @@
 <section class="note-form{% if noteEditorClass is defined %} {{ noteEditorClass }}{% endif %}">
-    {{ form_start(noteForm, {'attr': {'class': 'note-form'}}) }}
+    {{ form_start(noteForm, {'attr': {'class': 'note-form', 'id': 'note-form'}}) }}
     <div class="note-editor">
         {{ form_label(noteForm.title) }}
         {{ form_widget(noteForm.title, {'attr': {'class': 'note-form-input'}}) }}
@@ -7,71 +7,34 @@
         {{ form_widget(noteForm.content, {'attr': {'class': 'note-form-textarea'}}) }}
     </div>
     <div class="note-command max-width-m">
-        {{ form_label(noteForm.readCode) }}
-        {{ form_widget(noteForm.readCode, {'attr': {'class': 'note-form-input'}}) }}
-    </div>
-    <div class="note-command max-width-m">
-        {{ form_label(noteForm.editCode) }}
-        {{ form_widget(noteForm.editCode, {'attr': {'class': 'note-form-input'}}) }}
-    </div>
-    <div class="note-command max-width-m">
         {{ form_label(noteForm.url) }}
         {{ form_widget(noteForm.url, {'attr': {'class': 'note-form-input'}}) }}
     </div>
     <div class="note-command max-width-m">
         <button class="note-command-button button is-success" id="save-button" type="submit">Save</button>
-        {% if note is defined %}
-            <button class="note-command-button button is-danger" id="delete-button" type="button">Delete</button>
-        {% endif %}
     </div>
     {{ form_end(noteForm) }}
 </section>
 
 <script>
-    const saveButtonElement = document.getElementById('save-button');
-
-    saveButtonElement.addEventListener('mousedown', setUrl)
-
-    function setUrl() {
-        const urlElement = document.getElementById('note_url');
-        const titleElement = document.getElementById('note_title');
-
-        if (urlElement.value) {
-            return;
-        }
-
-        urlElement.value = titleElement.value.split(' ')[0];
-    }
-</script>
-
-{% if note is defined %}
-    <script>
-        const deleteButtonElement = document.getElementById('delete-button');
-
-        deleteButtonElement.addEventListener('click', deleteNote);
-
-        function deleteNote() {
-            const editCodeElement = document.getElementById('note_editCode');
-
-            if (!editCodeElement.value) {
-                console.error('Missing edit code.');
-                return;
-            }
-
-            window.location.href = `{{ path('note_delete', {url: note.url}) }}?edit_code=${editCodeElement.value}`;
-        }
-
-        const noteFormElement = document.getElementById('note-form');
+    (function () {
+        const noteFormElement = document.getElementById('save-button');
 
         noteFormElement.addEventListener('submit', function (event) {
             event.preventDefault();
+            setUrl();
+            this.submit();
+        })
 
-            if (!document.getElementById('note_editCode').value) {
-                console.error('Missing edit code.');
-                return;
+        function setUrl() {
+            const urlElement = document.getElementById('note_url');
+            const titleElement = document.getElementById('note_title');
+
+            if (urlElement.value) {
+                return false;
             }
 
-            this.submit();
-        });
-    </script>
-{% endif %}
+            urlElement.value = titleElement.value.split(' ')[0];
+        }
+    })();
+</script>
