@@ -9,6 +9,7 @@
 {% block content %}
     <section class="note-commands">
         <a class="button is-warning" href="{{ path('note_edit', { url: note.url }) }}">Edit</a>
+        <button id="markdown-preview-button" class="is-success">Markdown preview</button>
     </section>
     <section class="note">
         <h1>{{ note.title }}</h1>
@@ -19,13 +20,20 @@
 {% block javascripts %}
     <script src="{{ asset('js/marked.min.js') }}"></script>
     <script>
-        // Transpile markdown into html.
         (function () {
-            const contentElements = document.getElementsByClassName('note-content');
+            // Transpile markdown into html.
+            function previewMarkdown() {
+                const contentElements = document.getElementsByClassName('note-content');
 
-            for (let element of contentElements) {
-                element.innerHTML = marked(element.textContent);
+                for (let element of contentElements) {
+                    element.innerHTML = marked(element.textContent);
+                }
             }
+
+            document.getElementById('markdown-preview-button').addEventListener('click', function () {
+                previewMarkdown();
+                this.remove();
+            });
         })();
     </script>
 {% endblock %}

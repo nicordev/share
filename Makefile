@@ -13,4 +13,9 @@ delete-cache:
 cache-clear: delete-cache
 	php bin/console cache:clear
 
-.PHONY: load-fixtures doctrine-schema-update
+install: database
+
+database:
+	php bin/console doctrine:database:create
+
+.PHONY: load-fixtures doctrine-schema-update database install
