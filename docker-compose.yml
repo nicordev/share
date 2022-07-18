@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  nginx-service:
+    image: nginx:stable-alpine
+    container_name: nginx-container
+    ports:
+      - "8003:80"
+    volumes:
+      - ./:/app
+      - ./docker/nginx/app.conf:/etc/nginx/conf.d/default.conf
+  php74-service:
+    container_name: php-container
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - .:/app

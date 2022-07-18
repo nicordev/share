@@ -1,6 +1,9 @@
 start:
 	symfony serve
 
+composer-install:
+	composer install
+
 load-fixtures:
 	php bin/console doctrine:fixtures:load --quiet
 
@@ -13,9 +16,9 @@ delete-cache:
 cache-clear: delete-cache
 	php bin/console cache:clear
 
-install: database
+install: composer-install database
 
 database:
 	php bin/console doctrine:database:create
 
-.PHONY: load-fixtures doctrine-schema-update database install
+.PHONY: composer-install load-fixtures doctrine-schema-update database install
