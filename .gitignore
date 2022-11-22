@@ -1,3 +1,4 @@
+devops/caddy/ca-certificates
 
 ###> symfony/framework-bundle ###
 /.env.local

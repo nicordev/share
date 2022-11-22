@@ -1,0 +1,7 @@
+{$SERVER_NAME} {
+    root * /srv/app/public
+    tls /usr/local/share/ca-certificates/{$SERVER_NAME}.pem /usr/local/share/ca-certificates/{$SERVER_NAME}-key.pem
+    encode gzip
+    php_fastcgi application:9000
+    file_server
+}

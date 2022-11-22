@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  proxy:
+    image: "caddy:2"
+    environment:
+      SERVER_NAME: "${SERVER_NAME}"
+    volumes:
+    -
+      source: "./devops/caddy"
+      target: "/etc/caddy"
+      type: "bind"
+    -
+      source: "./devops/caddy/ca-certificates"
+      target: "/usr/local/share/ca-certificates"
+      type: "bind"
+    -
+      source: "./public"
+      target: "/srv/app/public"
+      type: "bind"
+    ports:
+      -
+        published: 87
+        target: 80
+        protocol: "tcp"
+      -
+        published: 447
+        target: 443
+        protocol: "tcp"
+      -
+        published: 447
+        target: 443
+        protocol: "udp"
+
+  application:
+    build:
+      context: "."
+      dockerfile: "./devops/php/Dockerfile"
+    environment:
+      PHP_IDE_CONFIG: "serverName=${SERVER_NAME}"
+    volumes:
+    -
+      source: "./"
+      target: "/srv/app"
+      type: "bind"
+
+  database:
+    image: "postgres:15.0"
+    volumes:
+    -
+      source: "database"
+      target: "/var/lib/postgresql/data"
+      type: "volume"
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    ports:
+      -
+        published: 5437
+        target: 5432
+        protocol: "tcp"
+
+volumes:
+  database: ~
